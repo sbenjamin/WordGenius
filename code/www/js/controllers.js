@@ -28,26 +28,25 @@ angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services','ui.boo
     showLoading(true);
     
     //Simulated loading of dictionary.
-    $timeout(function(){showLoading(false)}, 750);
-    
-    
+    $timeout(function(){showLoading(false)}, 550);
+        
     $scope.dictionary = DictionaryService.getAvailableWords();
-    console.log('getAvailableWords',$scope.dictionary)
- 
+
     //restrict type ahead to words starting with the letter.
     $scope.startsWith = function(word, viewValue) {
         return word.substr(0, viewValue.length).toLowerCase() == viewValue.toLowerCase();
     };
     
     $scope.removeWord = function(id,word){
+        console.log('remove:',id,word);
         DictionaryService.removeSelectedWord(word);
-        $("#_"+id).parent().remove();
+        $("#"+id).parent().remove();
         $scope.selectedWord = '';
         $scope.hideMsg = true;
     };
     
     $scope.checkResults = function(){
-        console.log('checkResults')
+
         var listBox = jQuery( "[role='listbox']" );
         //get the length of the type ahead results.
         if(DictionaryService.getWordCount() >= Settings.maxWords){
@@ -57,7 +56,6 @@ angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services','ui.boo
             listBox.hide();
         }
         else if( $scope.selectedWord && listBox.children().length === 0){
-            console.log('There are no words left that start with:'+$scope.selectedWord);
              $scope.hideMsg = false;
             $(".msg").html('There are no words left that start with "'+$scope.selectedWord+'"');
          }else{
@@ -74,20 +72,15 @@ angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services','ui.boo
         $(".wordCircle").last().addClass('color'+getColor());
     }
 
+
     $scope.afterSelect = function(item){
-        console.log('afterSelect:',item);
         DictionaryService.addselectedWord(item);
         $scope.selectedWord = '';
-        $timeout(applyRandomColor,100);
+        $timeout(applyRandomColor,50);
     }
     
-    $scope.selectedWordAry = DictionaryService.getSelectedWords();
-    console.log($scope.selectedWordAry )
-
-    
+    $scope.selectedWordAry = DictionaryService.getSelectedWords();    
 })
-
-
 
 // Reset Controller
 .controller('ResetController', function($scope, $window) {

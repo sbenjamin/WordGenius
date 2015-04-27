@@ -12,15 +12,9 @@ angular.module('wordgenius.services', ['ionic.utils'])
         selectedWords = [];
         
         var resetGame = function(){
-            var results = {};
             var deepCopy = angular.copy(dictionary);
             availableWords = deepCopy.words;
             selectedWords = [];
-            console.log('Game Started');
-            
-            results.availableWords = availableWords;
-            results.selectedWords = selectedWords;
-            return results;
         };
     
         var getSelectedWords = function(){
