@@ -51,3 +51,5 @@ var wordgeniusApp = angular.module('wordgenius', ['ionic', 'wordgenius.controlle
 
     $urlRouterProvider.otherwise('/tab/play');
 });
+
+   
