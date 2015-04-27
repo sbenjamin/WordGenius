@@ -1,14 +1,15 @@
 <ion-view view-title="Word Genius" class="discover-page">
     <ion-content scroll="false">
         <div class='container-fluid' ng-controller="PlayController">
-        <h3 class="instructions"> Start typing to select words.</h3>
-        <div class="wordInputWrap">
-            <input type="text" ng-model="selectedWord" typeahead="word for word in dictionary | filter:$viewValue | filter:$viewValue:startsWith" class="wordInput" placeholder="Tap here to start" autofocus="true">
+            <h3 class="instructions"> Start typing to select words.</h3>
+            <div class="wordInputWrap">
+                <input type="text" ng-model="selectedWord" typeahead="word for word in dictionary | filter:$viewValue | filter:$viewValue:startsWith" class="wordInput" placeholder="Tap here to start" autofocus="true" typeahead-on-select="afterSelect($item)">
+            </div>
+            <div style="margin-top:20px;">
+                <pre>Model: {{selectedWord | json}}</pre>
+            </div>
+            <div selected-words>hello</div>
         </div>
-        <div style="margin-top:20px;">
-            <pre>Model: {{selectedWord | json}}</pre>
-        </div>    
-</div>
 
     </ion-content>
 </ion-view>

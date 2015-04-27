@@ -40,23 +40,20 @@ angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services','ui.boo
         return word.substr(0, viewValue.length).toLowerCase() == viewValue.toLowerCase();
     };
 
-   
+    $scope.afterSelect = function(item){
+        console.log('afterSelect:',item);
+        DictionaryService.addselectedWord(item);
+        $scope.selectedWord = '';
+    }
 
-}) //PlayController
+    
+})
 
 // Favorites Controller
-.controller('ResetController', function($scope) {
-
-
-})
+.controller('ResetController', function($scope) {})
 
 //Tab Controller
-.controller('TabsCtrl', function() {
-    
-
-    
-
-})
+.controller('TabsCtrl', function() {})
 
 
 

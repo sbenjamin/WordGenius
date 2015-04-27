@@ -5,7 +5,7 @@
 //www.stevenbenjamin.com
 
 
-angular.module('wordgenius', ['ionic', 'wordgenius.controllers'])
+var wordgeniusApp = angular.module('wordgenius', ['ionic', 'wordgenius.controllers'])
 
 .run(function($ionicPlatform, $rootScope, $state) {
     $ionicPlatform.ready(function() {
