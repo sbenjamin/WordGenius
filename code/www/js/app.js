@@ -34,7 +34,7 @@ angular.module('wordgenius', ['ionic', 'wordgenius.controllers'])
             url: '/play',
             views: {
                 'tab-discover': {
-                    templateUrl: 'templates/discover.html',
+                    templateUrl: 'templates/play.html',
                     controller: 'PlayController'
                 }
             }
@@ -43,7 +43,7 @@ angular.module('wordgenius', ['ionic', 'wordgenius.controllers'])
             url: '/reset',
             views: {
                 'tab-favorites': {
-                    templateUrl: 'templates/favorites.html',
+                    templateUrl: 'templates/reset.html',
                     controller: 'ResetController'
                 }
             }

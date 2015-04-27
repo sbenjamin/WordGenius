@@ -4,26 +4,36 @@
 
 angular.module('wordgenius.services', ['ionic.utils'])
 
-    .factory('Dictionary', function(Settings) {
+    .factory('DictionaryService', function(Settings) {
         
         var dictionary = {"words":["amazing","beakers","cottage","dog","elephant","fauna","grasshopper","hiding","iota","journey", "king", "lion", "mango", "nonsense", "operational", "product", "quiet", "reason", "sandwich", "tomato", "universe", "version", "wage", "xenophobia", "zebra"]};
     
-        var availableWords = [];
+        availableWords = {};
+        selectedWords = {};
         
         var resetGame = function(){
-            availableWords = [];
+            availableWords = angular.copy(dictionary);
+            selectedWords = [];
+            console.log('Game Started')
         };
     
-        var startGame = function(){};
         var selectWord = function(){};
         var removeWord = function(){};
-        var getWordCount = function(){};
+    
+        var getWordCount = function(){
+            return selectedWords.length;
+        };
+    
+        var getAvailableWords = function(){
+            return availableWords.words;
+        }
     
         return {
-            resetGame :resetGame,
-            startGame : startGame,
+            resetGame : resetGame,
             selectWord : selectWord,
-            removeWord : removeWord
+            removeWord : removeWord,
+            getWordCount : getWordCount,
+            getAvailableWords : getAvailableWords
         };
       
     })

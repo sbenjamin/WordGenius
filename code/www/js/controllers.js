@@ -2,11 +2,14 @@
 //April 27, 2015
 //www.stevenbenjamin.com
 
-angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services'])
+angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services','ui.bootstrap'])
 
 //Discover Controller
-.controller('PlayController', function($scope, $ionicLoading, $timeout) {
+.controller('PlayController', function($scope, $ionicLoading, $timeout, DictionaryService) {
 
+    
+    DictionaryService.resetGame();
+    
     // helper function for loading
     var showLoading = function(isVisible) {       
         if(typeof(isVisible)==='undefined'){isVisible = true;}
@@ -26,6 +29,16 @@ angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services'])
     
     //Simulated loading of dictionary.
     $timeout(function(){showLoading(false)}, 750);
+    
+    
+    $scope.selected = undefined;
+    $scope.dictionary = DictionaryService.getAvailableWords();
+    console.log('getAvailableWords',$scope.dictionary)
+ 
+    
+    $scope.startsWith = function(word, viewValue) {
+        return word.substr(0, viewValue.length).toLowerCase() == viewValue.toLowerCase();
+    };
 
    
 
@@ -41,5 +54,9 @@ angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services'])
 .controller('TabsCtrl', function() {
     
 
-});
+    
+
+})
+
+
 
