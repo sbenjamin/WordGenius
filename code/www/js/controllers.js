@@ -31,7 +31,6 @@ angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services','ui.boo
     $timeout(function(){showLoading(false)}, 750);
     
     
-    $scope.selected = undefined;
     $scope.dictionary = DictionaryService.getAvailableWords();
     console.log('getAvailableWords',$scope.dictionary)
  
@@ -88,8 +87,14 @@ angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services','ui.boo
     
 })
 
-// Favorites Controller
-.controller('ResetController', function($scope) {})
+
+
+// Reset Controller
+.controller('ResetController', function($scope, $window) {
+    $scope.resetGame = function(){
+            $window.location="/";
+    };
+})
 
 //Tab Controller
 .controller('TabsCtrl', function() {})

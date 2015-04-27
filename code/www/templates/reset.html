@@ -2,9 +2,12 @@
 <!-- April 26, 2015 -->
 <!-- www.stevenbenjamin.com -->
 
-<ion-view view-title="Reset Game" class="favorites-page">
+<ion-view view-title="Reset Game" class="favorites-page" ng-controller="ResetController">
     <ion-content>
-
-        Reset Game ?
+        <div class="centerButton">
+        <button class="button button-assertive" ng-click="resetGame()">
+            Click to Reset Game
+        </button>
+        </div>    
     </ion-content>
 </ion-view>
