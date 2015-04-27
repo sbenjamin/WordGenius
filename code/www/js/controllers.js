@@ -38,7 +38,6 @@ angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services','ui.boo
     };
     
     $scope.removeWord = function(id,word){
-        console.log('remove:',id,word);
         DictionaryService.removeSelectedWord(word);
         $("#"+id).parent().remove();
         $scope.selectedWord = '';
