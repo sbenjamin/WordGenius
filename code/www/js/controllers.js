@@ -42,7 +42,9 @@ angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services','ui.boo
     
     $scope.removeWord = function(id,word){
         DictionaryService.removeSelectedWord(word);
-        $("#_"+id).remove();
+        $("#_"+id).parent().remove();
+        $scope.selectedWord = '';
+        $scope.hideMsg = true;
     };
     
     $scope.checkResults = function(){
@@ -53,7 +55,7 @@ angular.module('wordgenius.controllers', ['ionic', 'wordgenius.services','ui.boo
             $scope.hideMsg = false;
             $(".msg").html('You have reached the maximum of '+Settings.maxWords+' words.');
             $scope.selectedWord = '';
-            listBox.hide()
+            listBox.hide();
         }
         else if( $scope.selectedWord && listBox.children().length === 0){
             console.log('There are no words left that start with:'+$scope.selectedWord);

@@ -27,8 +27,9 @@ angular.module('wordgenius.services', ['ionic.utils'])
             return selectedWords;
         };
     
-        var removeSelectedWord = function(e){
-            console.log('removeSelectedWord',e);
+        var removeSelectedWord = function(word){
+            availableWords.push(word);
+            selectedWords.splice(selectedWords.indexOf(word), 1);
         };
     
         var getWordCount = function(){
